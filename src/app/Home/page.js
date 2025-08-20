@@ -1,9 +1,16 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FaLinkedin, FaGithub, FaBriefcase } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
 
 const Home = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <motion.section
       id="home"
@@ -36,6 +43,7 @@ const Home = () => {
           Contact
         </motion.a>
 
+        {/* Social Icons */}
         <motion.div
           className="flex gap-4 mt-4 text-gray-700 text-xl"
           initial={{ opacity: 0 }}
@@ -43,13 +51,33 @@ const Home = () => {
           transition={{ delay: 0.6, duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <a href="#" className="hover:text-blue-600">
+          {/* LinkedIn */}
+          <a
+            href="https://www.linkedin.com/in/mohammad-hammad-778b03258"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-600"
+          >
             <FaLinkedin />
           </a>
-          <a href="#" className="hover:text-blue-600">
-            <FaBriefcase />
+
+          {/* WhatsApp */}
+          <a
+            href="https://wa.me/923209060485" // ✅ replace with your real WhatsApp number
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-green-600"
+          >
+            <FaWhatsapp />
           </a>
-          <a href="#" className="hover:text-blue-600">
+
+          {/* GitHub */}
+          <a
+            href="https://github.com/hammad200208"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-800"
+          >
             <FaGithub />
           </a>
         </motion.div>
@@ -63,36 +91,38 @@ const Home = () => {
         transition={{ duration: 0.8, delay: 0.4 }}
         viewport={{ once: true }}
       >
-        <div className="relative w-[320px] h-[320px] md:w-[400px] md:h-[400px]">
-          <svg
-            viewBox="0 0 479 467"
-            xmlns="http://www.w3.org/2000/svg"
-            className="absolute top-0 left-0 w-full h-full"
-          >
-            <defs>
-              <mask id="mask0" mask-type="alpha">
-                <path
-                  d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"
-                  fill="#fff"
-                />
-              </mask>
-            </defs>
-            <g mask="url(#mask0)">
-              {/* Blue background */}
-              <rect width="100%" height="100%" fill="#2563eb" />
+        {mounted && (
+          <div className="relative w-[320px] h-[320px] md:w-[400px] md:h-[400px]">
+            <svg
+              viewBox="0 0 479 467"
+              xmlns="http://www.w3.org/2000/svg"
+              className="absolute top-0 left-0 w-full h-full"
+            >
+              <defs>
+                <mask id="mask0" mask-type="alpha">
+                  <path
+                    d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"
+                    fill="#fff"
+                  />
+                </mask>
+              </defs>
+              <g mask="url(#mask0)">
+                {/* Blue background */}
+                <rect width="100%" height="100%" fill="#2563eb" />
 
-              {/* Smaller image inside blob */}
-              <image
-                href="/bg.png"
-                x="12%"      // shift right
-                y="10%"       // shift down
-                width="75%"  // smaller width
-                height="90%" // smaller height
-                preserveAspectRatio="xMidYMid meet"
-              />
-            </g>
-          </svg>
-        </div>
+                {/* Profile Image inside blob */}
+                <image
+                  xlinkHref="/bg.png"
+                  x="12%"
+                  y="10%"
+                  width="75%"
+                  height="90%"
+                  preserveAspectRatio="xMidYMid meet"
+                />
+              </g>
+            </svg>
+          </div>
+        )}
       </motion.div>
     </motion.section>
   );
