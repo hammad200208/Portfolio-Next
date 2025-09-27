@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 import { FaHtml5, FaCss3Alt, FaJs } from "react-icons/fa";
 import {
   SiBootstrap,
@@ -9,127 +10,95 @@ import {
   SiNextdotjs,
   SiGit,
   SiGithub,
-} from "react-icons/si"; // ✅ Import missing icons
-import Image from "next/image";
-
-// Individual Skill Bar Animation Component
-const SkillBar = ({ skill }) => {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
-
-  return (
-    <div ref={ref} className="mb-6 bg-white p-4 rounded-lg shadow-md">
-      <div className="flex justify-between items-center mb-2">
-        <div className="flex items-center gap-2 text-lg font-medium">
-          {skill.icon}
-          {skill.name}
-        </div>
-        <span className="font-semibold">{skill.level}</span>
-      </div>
-      <div className="w-full bg-blue-100 rounded-full h-2">
-        <motion.div
-          className="bg-blue-600 h-2 rounded-full"
-          initial={{ width: 0 }}
-          animate={{ width: inView ? `${skill.width}%` : 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        />
-      </div>
-    </div>
-  );
-};
+  SiMongodb,
+  SiMongoose,
+  SiNodedotjs,
+  SiExpress,
+  SiTailwindcss,
+} from "react-icons/si";
 
 const skills = [
-  {
-    name: "HTML5",
-    level: "95%",
-    icon: <FaHtml5 className="text-orange-600 text-xl" />,
-    width: 95,
-  },
-  {
-    name: "CSS3",
-    level: "90%",
-    icon: <FaCss3Alt className="text-blue-600 text-xl" />,
-    width: 90,
-  },
-  {
-    name: "Bootstrap",
-    level: "85%",
-    icon: <SiBootstrap className="text-purple-600 text-xl" />,
-    width: 85,
-  },
-  {
-    name: "JavaScript",
-    level: "80%",
-    icon: <FaJs className="text-yellow-500 text-xl" />,
-    width: 80,
-  },
-  {
-    name: "React Js",
-    level: "75%",
-    icon: <SiReact className="text-blue-500 text-xl" />,
-    width: 75,
-  },
-  {
-    name: "Next.js",
-    level: "70%",
-    icon: <SiNextdotjs className="text-black text-xl" />,
-    width: 70,
-  },
+  // Frontend
+  { name: "HTML5", level: "95%", width: 95, icon: <FaHtml5 className="text-orange-600 text-3xl" /> },
+  { name: "CSS3", level: "90%", width: 90, icon: <FaCss3Alt className="text-blue-600 text-3xl" /> },
+  { name: "Bootstrap", level: "85%", width: 85, icon: <SiBootstrap className="text-purple-600 text-3xl" /> },
+  { name: "Tailwind CSS", level: "80%", width: 80, icon: <SiTailwindcss className="text-cyan-500 text-3xl" /> },
+  { name: "JavaScript", level: "85%", width: 85, icon: <FaJs className="text-yellow-500 text-3xl" /> },
+  { name: "React.js", level: "80%", width: 80, icon: <SiReact className="text-blue-500 text-3xl" /> },
+  { name: "Next.js", level: "75%", width: 75, icon: <SiNextdotjs className="text-black text-3xl" /> },
+
+  // Backend
+  { name: "Node.js", level: "75%", width: 75, icon: <SiNodedotjs className="text-green-600 text-3xl" /> },
+  { name: "Express.js", level: "70%", width: 70, icon: <SiExpress className="text-gray-700 text-3xl" /> },
+
+  // Database
+  { name: "MongoDB", level: "70%", width: 70, icon: <SiMongodb className="text-green-700 text-3xl" /> },
+  { name: "Mongoose", level: "65%", width: 65, icon: <SiMongoose className="text-red-600 text-3xl" /> },
+
+  // Tools
   {
     name: "Git & GitHub",
     level: "70%",
+    width: 70,
     icon: (
-      <div className="flex gap-2">
-        <SiGit className="text-red-600 text-xl" />
-        <SiGithub className="text-gray-900 text-xl" />
+      <div className="flex gap-2 text-3xl">
+        <SiGit className="text-red-600" />
+        <SiGithub className="text-gray-900" />
       </div>
     ),
-    width: 70,
   },
 ];
+
 
 const Skills = () => {
   return (
     <motion.section
       id="skills"
-      className="py-20 px-6 bg-white"
+      className="py-20 px-6 bg-gray-50"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
       viewport={{ once: true, amount: 0.3 }}
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto text-center">
         <motion.h2
-          className="text-3xl font-semibold text-blue-600 mb-12 text-center"
+          className="text-3xl font-bold text-blue-600 mb-12"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          Professional Skills
+          MERN Stack Skills
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            {skills.map((skill, idx) => (
-              <SkillBar key={idx} skill={skill} />
-            ))}
-          </div>
-
-          <motion.div
-            className="flex justify-center"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <Image
-              src="/work3.jpg"
-              alt="Skills"
-              width={400}
-              height={400}
-              className="w-[400px] rounded-xl shadow-md object-cover"
-            />
-          </motion.div>
+        {/* Grid of Circular Skills */}
+        <div className="grid md:grid-cols-3 gap-12">
+          {skills.map((skill, idx) => (
+            <motion.div
+              key={idx}
+              className="bg-white shadow-lg rounded-xl p-6 flex flex-col items-center gap-4 hover:shadow-blue-400/50 transition"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="w-24 h-24">
+                <CircularProgressbar
+                  value={skill.width}
+                  text={skill.level}
+                  styles={buildStyles({
+                    pathColor: "#2563eb",
+                    textColor: "#1e3a8a",
+                    trailColor: "#e5e7eb",
+                  })}
+                />
+              </div>
+              <div className="flex items-center gap-2 text-lg font-semibold">
+                {skill.icon}
+                {skill.name}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </motion.section>

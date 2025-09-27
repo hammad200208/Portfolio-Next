@@ -31,7 +31,7 @@ const Home = () => {
         <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-gray-900">
           Hi,<br />
           I&apos;m <span className="text-blue-600">Hammad</span><br />
-          Web Developer
+          Mern Stack Developer.
         </h1>
 
         <motion.a

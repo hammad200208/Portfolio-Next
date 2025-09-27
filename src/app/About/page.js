@@ -23,7 +23,7 @@ const About = () => {
           viewport={{ once: true }}
         >
           <Image
-            src="/bg-removebg-preview.jpg"
+            src="/about.png"
             alt="About"
             width={288}   // md:w-72
             height={288}
@@ -43,9 +43,7 @@ const About = () => {
             About Me
           </h2>
           <p className="text-gray-700 leading-relaxed mb-6">
-            I&apos;m a passionate web developer with experience in creating
-            responsive and interactive websites. My focus is on writing clean
-            and efficient code using modern web technologies.
+            I&apos;m a passionate MERN Stack developer with experience in building responsive, interactive, and full-stack web applications. Skilled in MongoDB, Express.js, React.js, and Node.js, I focus on writing clean, efficient code and delivering seamless user experiences.
           </p>
           <p className="text-gray-700 leading-relaxed">
             I love solving problems and bringing ideas to life through code.
