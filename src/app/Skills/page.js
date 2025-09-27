@@ -68,7 +68,7 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          MERN Stack Skills
+           Skills
         </motion.h2>
 
         {/* Grid of Circular Skills */}
