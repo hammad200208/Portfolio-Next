@@ -7,30 +7,40 @@ const projects = [
   {
     title: "Planto Project",
     image: "/work1.PNG",
-    description: "A modern plant shop website where users can order plants online. Built with React and Tailwind CSS.",
+    description:
+      "A modern plant shop website where users can order plants online. Built with React and Tailwind CSS.",
     code: "https://github.com/hammad200208/Planto-Project.git",
     tags: ["React", "Tailwind", "API"],
   },
   {
     title: "Child Book Ai",
     image: "/child.png",
-    description: "AI-powered website where users can generate children’s storybooks using prompts. Built with React and AI integration.",
+    description:
+      "AI-powered website where users can generate children’s storybooks using prompts. Built with React and AI integration.",
     code: "https://github.com/hammad200208/CHILDBOOKAI",
     tags: ["React", "Tailwind", "API"],
   },
-     {
-    title: "University Website",
-    image: "/university.png",
+  {
+    title: "Kashaf Textile Hub",
+    image: "/kashaf.png",
     description:
-      "Fully responsive university website built with HTML, CSS, and JavaScript.",
-    code: "https://github.com/hammad200208/Html-Css-Project",
-    tags: ["HTML", "CSS", "JavaScript"],
+      "Kashaf Textile Hub is a women-led textile & design startup. The Hub aims to help art & design graduates (especially women) who previously lacked access to equipment, industry exposure, mentorship, or a safe professional space.",
+    code: "https://github.com/hammad200208/Kashaf-Textile-Hub",
+    tags: ["Next", "Tailwind", "API"],
   },
   {
     title: "Crumble Landing Page",
     image: "/crumble.png",
     description: "Landing page built with React and Tailwind CSS.",
     code: "https://github.com/hammad200208/Crumble-Project",
+    tags: ["React", "Tailwind"],
+  },
+  {
+    title: "University Website",
+    image: "/university.png",
+    description:
+      "Fully responsive university website built with HTML, CSS, and JavaScript.",
+    code: "https://github.com/hammad200208/Html-Css-Project",
     tags: ["HTML", "CSS", "JavaScript"],
   },
   {
@@ -41,7 +51,6 @@ const projects = [
     code: "https://github.com/hammad200208/Traveling-Landing-Page",
     tags: ["HTML", "Bootstrap", "CSS"],
   },
-
   {
     title: "Rock Paper Scissors Game",
     image: "/work3.PNG",
@@ -78,29 +87,29 @@ const Work = () => {
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
-              className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-2xl transition duration-300 group"
+              className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 + idx * 0.2 }}
               viewport={{ once: true }}
             >
               {/* Image with hover zoom */}
-              <div className="overflow-hidden">
+              <div className="w-full h-48 overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
                   width={500}
                   height={300}
-                  className="w-full h-48 object-cover transform group-hover:scale-105 transition duration-500"
+                  className="w-full h-full object-cotain transform group-hover:scale-105 transition duration-500"
                 />
               </div>
 
               {/* Content */}
-              <div className="p-5 text-left">
+              <div className="p-5 text-left flex flex-col flex-grow">
                 <h3 className="text-xl font-semibold mb-2 text-gray-900">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 mb-4 text-sm">
+                <p className="text-gray-600 mb-4 text-sm line-clamp-3 min-h-[60px]">
                   {project.description}
                 </p>
 
@@ -117,7 +126,7 @@ const Work = () => {
                 </div>
 
                 {/* Only Code Button */}
-                <div>
+                <div className="mt-auto">
                   <a
                     href={project.code}
                     target="_blank"
