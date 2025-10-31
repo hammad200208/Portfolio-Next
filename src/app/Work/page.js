@@ -9,15 +9,23 @@ const projects = [
     image: "/work1.PNG",
     description:
       "A modern plant shop website where users can order plants online. Built with React and Tailwind CSS.",
-    code: "https://github.com/hammad200208/Planto-Project.git",
+    code: "https://planto-project-9814.vercel.app/",
     tags: ["React", "Tailwind", "API"],
+  },
+  {
+    title: "Resumen Ai",
+    image: "/resume.png",
+    description:
+      "An AI-powered resume builder built with the MERN stack and Tailwind CSS. It helps users generate, edit, and download professional resumes instantly with smart AI suggestions and a modern, responsive design.",
+    code: "https://airesume-ruddy.vercel.app/",
+    tags: ["Next", "Tailwind", "API"],
   },
   {
     title: "Child Book Ai",
     image: "/child.png",
     description:
       "AI-powered website where users can generate children’s storybooks using prompts. Built with React and AI integration.",
-    code: "https://github.com/hammad200208/CHILDBOOKAI",
+    code: "https://childbook-ai-pink.vercel.app/",
     tags: ["React", "Tailwind", "API"],
   },
   {
@@ -133,7 +141,7 @@ const Work = () => {
                     rel="noopener noreferrer"
                     className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition"
                   >
-                    View Code
+                    View 
                   </a>
                 </div>
               </div>
