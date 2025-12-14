@@ -1,4 +1,4 @@
-"use client"; // needed if you're using Next.js App Router
+"use client";
 
 import { useState, useEffect } from "react";
 import { Link } from "react-scroll";
@@ -19,7 +19,7 @@ const Header = () => {
 
       sections.forEach((section) => {
         const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 58;
+        const sectionTop = section.offsetTop - 70;
         const sectionId = section.getAttribute("id");
 
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
@@ -41,65 +41,72 @@ const Header = () => {
   ];
 
   return (
-    <header className="w-full fixed top-0 left-0 z-50 bg-white text-black shadow-md transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header className="w-full fixed top-0 left-0 z-50 bg-white text-black shadow-md">
+      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+
         {/* Logo */}
-        <div className="flex-1">
+        <div className="flex items-center">
           <Image
-            src="/logo.png" // place logo.png inside /public folder
+            src="/logo2.png"
             alt="MH Logo"
-            width={120}
-            height={40}
-            className="h-10 md:h-15 w-auto object-contain"
+            width={500}
+            height={500}
+            className="h-12 md:h-20 w-auto object-contain"
             priority
           />
         </div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex space-x-8 items-center">
+        <nav className="hidden md:flex items-center space-x-8">
           {navItems.map((item) => (
             <Link
               key={item.id}
               to={item.id}
-              spy={true}
               smooth={true}
-              offset={-60}
+              offset={-70}
               duration={500}
-              className={`cursor-pointer font-medium transition ${
-                activeSection === item.id ? "text-green-700" : "text-gray-700"
-              }`}
+              spy={true}
+              className={`cursor-pointer font-medium text-[16px] transition 
+                ${
+                  activeSection === item.id
+                    ? "text-green-700 font-semibold"
+                    : "text-gray-700"
+                }`}
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        {/* Mobile Toggle */}
-        <div className="md:hidden flex items-center">
+        {/* Mobile Icon */}
+        <div className="md:hidden">
           <FiMenu
-            size={28}
+            size={30}
             className="text-green-700 cursor-pointer"
             onClick={toggleMenu}
           />
         </div>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden px-6 py-4 border-t bg-white text-black border-gray-200">
-          <nav className="flex flex-col space-y-4">
+        <div className="md:hidden bg-white border-t border-gray-200 px-6 py-4">
+          <nav className="flex flex-col space-y-5">
             {navItems.map((item) => (
               <Link
                 key={item.id}
                 to={item.id}
-                spy={true}
                 smooth={true}
-                offset={-60}
+                offset={-70}
                 duration={500}
+                spy={true}
                 onClick={closeMenu}
-                className={`block font-medium transition ${
-                  activeSection === item.id ? "text-green-700" : "text-gray-700"
-                }`}
+                className={`font-medium text-[18px] transition 
+                  ${
+                    activeSection === item.id
+                      ? "text-green-700 font-semibold"
+                      : "text-gray-700"
+                  }`}
               >
                 {item.label}
               </Link>

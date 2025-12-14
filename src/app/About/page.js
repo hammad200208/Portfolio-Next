@@ -7,7 +7,7 @@ const About = () => {
   return (
     <motion.section
       id="about"
-      className="section px-6 py-20 bg-white text-gray-900 text-center md:text-left"
+      className="section px-6 py-20 bg-white text-gray-900 text-center md:text-left max-w-5xl mx-auto"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
@@ -23,11 +23,11 @@ const About = () => {
           viewport={{ once: true }}
         >
           <Image
-            src="/about.png"
+            src="/about1.png"
             alt="About"
             width={288}   // md:w-72
             height={288}
-            className="w-52 md:w-72 rounded-lg shadow-md object-cover"
+            className="w-52 md:w-70 rounded-lg shadow-md object-cover"
             priority
           />
         </motion.div>

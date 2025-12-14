@@ -17,7 +17,7 @@ const Home = () => {
       className="min-h-screen flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-20 bg-white text-black transition-colors duration-300"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
       viewport={{ once: true, amount: 0.3 }}
     >
       {/* Left Side */}
@@ -112,7 +112,7 @@ const Home = () => {
 
                 {/* Profile Image inside blob */}
                 <image
-                  xlinkHref="/bg.png"
+                  xlinkHref="/bg2.png"
                   x="12%"
                   y="10%"
                   width="75%"
