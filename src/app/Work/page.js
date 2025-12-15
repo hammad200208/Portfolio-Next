@@ -16,7 +16,7 @@ const projects = [
     title: "Resumen Ai",
     image: "/resume.png",
     description:
-      "An AI-powered resume builder built with the MERN stack and Tailwind CSS. It helps users generate, edit, and download professional resumes instantly with smart AI suggestions and a modern, responsive design.",
+      "An AI-powered resume builder built with the MERN stack and Tailwind CSS.",
     code: "https://airesume-ruddy.vercel.app/",
     tags: ["Next", "Tailwind", "API"],
   },
@@ -24,7 +24,7 @@ const projects = [
     title: "Child Book Ai",
     image: "/child.png",
     description:
-      "AI-powered website where users can generate children’s storybooks using prompts. Built with React and AI integration.",
+      "AI-powered website where users can generate children’s storybooks.",
     code: "https://childbook-ai-pink.vercel.app/",
     tags: ["React", "Tailwind", "API"],
   },
@@ -32,9 +32,9 @@ const projects = [
     title: "Kashaf Textile Hub",
     image: "/kashaf.png",
     description:
-      "Kashaf Textile Hub is a women-led textile & design startup. The Hub aims to help art & design graduates (especially women) who previously lacked access to equipment, industry exposure, mentorship, or a safe professional space.",
+      "Women-led textile & design startup platform.",
     code: "https://github.com/hammad200208/Kashaf-Textile-Hub",
-    tags: ["Next", "Tailwind", "API"],
+    tags: ["Next", "Tailwind"],
   },
   {
     title: "Crumble Landing Page",
@@ -47,7 +47,7 @@ const projects = [
     title: "University Website",
     image: "/university.png",
     description:
-      "Fully responsive university website built with HTML, CSS, and JavaScript.",
+      "Fully responsive university website.",
     code: "https://github.com/hammad200208/Html-Css-Project",
     tags: ["HTML", "CSS", "JavaScript"],
   },
@@ -55,14 +55,14 @@ const projects = [
     title: "Traveling Landing Page",
     image: "/travel.png",
     description:
-      "Responsive travel landing page built with Bootstrap. Includes gallery, features, and booking sections.",
+      "Responsive travel landing page.",
     code: "https://github.com/hammad200208/Traveling-Landing-Page",
-    tags: ["HTML", "Bootstrap", "CSS"],
+    tags: ["HTML", "Bootstrap"],
   },
   {
     title: "Rock Paper Scissors Game",
     image: "/work3.PNG",
-    description: "Interactive game with score tracking using Vanilla JS.",
+    description: "Interactive game with Vanilla JS.",
     code: "https://github.com/hammad200208/Rock-Paper-Scissor-Game.git",
     tags: ["HTML", "CSS", "JavaScript"],
   },
@@ -72,14 +72,14 @@ const Work = () => {
   return (
     <motion.section
       id="work"
-      className="py-20 px-6 bg-gray-50 dark:bg-[#0b1120] text-gray-900 dark:text-gray-200 transition-colors duration-300"
-      initial={{ opacity: 0, y: 50 }}
+      className="w-full block py-20 px-6 bg-gray-50 dark:bg-[#0b1120] text-gray-900 dark:text-gray-200 transition-colors duration-300"
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true }}
     >
       <div className="max-w-6xl mx-auto text-center">
-        {/* Heading */}
+        {/* HEADING */}
         <motion.h2
           className="text-3xl font-semibold text-blue-600 dark:text-green-400 mb-12"
           initial={{ opacity: 0, y: -20 }}
@@ -90,38 +90,39 @@ const Work = () => {
           My Work
         </motion.h2>
 
-        {/* Project Grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {/* ✅ MOBILE-FIRST GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
-              className="bg-white dark:bg-gray-900 shadow-md dark:shadow-black/20 rounded-xl overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col"
-              initial={{ opacity: 0, y: 40 }}
+              className="bg-white dark:bg-gray-900 shadow-md dark:shadow-black/20 rounded-xl overflow-hidden flex flex-col"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 + idx * 0.1 }}
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
               viewport={{ once: true }}
             >
-              {/* Image with hover zoom */}
-              <div className="w-full h-48 overflow-hidden">
+              {/* IMAGE */}
+              <div className="w-full h-52 overflow-hidden bg-gray-100 dark:bg-gray-800">
                 <Image
                   src={project.image}
                   alt={project.title}
                   width={500}
                   height={300}
-                  className="w-full h-full object-contain transform group-hover:scale-105 transition duration-500"
+                  className="w-full h-full object-cover"
                 />
               </div>
 
-              {/* Content */}
+              {/* CONTENT */}
               <div className="p-5 text-left flex flex-col flex-grow">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">
+                <h3 className="text-xl font-semibold mb-2">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm line-clamp-3 min-h-[60px]">
+
+                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
                   {project.description}
                 </p>
 
-                {/* Tech Tags */}
+                {/* TAGS */}
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, i) => (
                     <span
@@ -133,13 +134,13 @@ const Work = () => {
                   ))}
                 </div>
 
-                {/* Only Code Button */}
+                {/* BUTTON */}
                 <div className="mt-auto">
                   <a
                     href={project.code}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-blue-600 dark:bg-green-500 text-white rounded-lg text-sm hover:bg-blue-700 dark:hover:bg-green-600 transition"
+                    className="inline-block px-4 py-2 bg-blue-600 dark:bg-green-500 text-white rounded-lg text-sm hover:bg-blue-700 dark:hover:bg-green-600 transition"
                   >
                     View
                   </a>

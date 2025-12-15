@@ -18,7 +18,6 @@ import {
 } from "react-icons/si";
 
 const skills = [
-  // Frontend
   { name: "HTML5", level: "95%", width: 95, icon: <FaHtml5 className="text-orange-600 text-3xl" /> },
   { name: "CSS3", level: "90%", width: 90, icon: <FaCss3Alt className="text-blue-600 text-3xl" /> },
   { name: "Bootstrap", level: "85%", width: 85, icon: <SiBootstrap className="text-purple-600 text-3xl" /> },
@@ -26,16 +25,10 @@ const skills = [
   { name: "JavaScript", level: "85%", width: 85, icon: <FaJs className="text-yellow-500 text-3xl" /> },
   { name: "React.js", level: "80%", width: 80, icon: <SiReact className="text-blue-500 text-3xl" /> },
   { name: "Next.js", level: "75%", width: 75, icon: <SiNextdotjs className="text-black dark:text-white text-3xl" /> },
-
-  // Backend
   { name: "Node.js", level: "75%", width: 75, icon: <SiNodedotjs className="text-green-600 text-3xl" /> },
   { name: "Express.js", level: "70%", width: 70, icon: <SiExpress className="text-gray-700 dark:text-gray-300 text-3xl" /> },
-
-  // Database
   { name: "MongoDB", level: "70%", width: 70, icon: <SiMongodb className="text-green-700 text-3xl" /> },
   { name: "Mongoose", level: "65%", width: 65, icon: <SiMongoose className="text-red-600 text-3xl" /> },
-
-  // Tools
   {
     name: "Git & GitHub",
     level: "70%",
@@ -53,11 +46,11 @@ const Skills = () => {
   return (
     <motion.section
       id="skills"
-      className="py-20 px-6 bg-gray-50 dark:bg-[#0b1120] transition-colors duration-300"
-      initial={{ opacity: 0, y: 50 }}
+      className="w-full block py-20 px-6 bg-gray-50 dark:bg-[#0b1120] transition-colors duration-300"
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.7 }}
+      viewport={{ once: true }}
     >
       <div className="max-w-6xl mx-auto text-center">
         <motion.h2
@@ -70,15 +63,15 @@ const Skills = () => {
           Skills
         </motion.h2>
 
-        {/* Grid of Circular Skills */}
-        <div className="grid md:grid-cols-3 gap-12">
+        {/* ✅ MOBILE-FIRST GRID */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {skills.map((skill, idx) => (
             <motion.div
               key={idx}
-              className="bg-white dark:bg-gray-900 shadow-lg dark:shadow-black/20 rounded-xl p-6 flex flex-col items-center gap-4 hover:shadow-blue-400/50 transition"
-              initial={{ opacity: 0, scale: 0.9 }}
+              className="bg-white dark:bg-gray-900 shadow-lg dark:shadow-black/20 rounded-xl p-6 flex flex-col items-center gap-4"
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
               viewport={{ once: true }}
             >
               <div className="w-24 h-24">
@@ -86,13 +79,13 @@ const Skills = () => {
                   value={skill.width}
                   text={skill.level}
                   styles={buildStyles({
-                    pathColor: "#2563eb", // blue for light
+                    pathColor: "#2563eb",
                     textColor: "#1e3a8a",
                     trailColor: "#e5e7eb",
-                    backgroundColor: "#3e98c7",
                   })}
                 />
               </div>
+
               <div className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-gray-200">
                 {skill.icon}
                 {skill.name}

@@ -20,9 +20,10 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState("");
   const [theme, setTheme] = useState("light");
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
   const closeMenu = () => setMenuOpen(false);
 
+  /* ------------------ THEME ------------------ */
   useEffect(() => {
     const stored = localStorage.getItem("theme");
     if (stored) {
@@ -38,52 +39,33 @@ const Header = () => {
     localStorage.setItem("theme", newTheme);
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll("section[id]");
-      const scrollY = window.scrollY;
-
-      sections.forEach((section) => {
-        const sectionHeight = section.offsetHeight;
-        const sectionTop = section.offsetTop - 80;
-        const sectionId = section.getAttribute("id");
-
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-          setActiveSection(sectionId);
-        }
-      });
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <header className="w-full fixed top-0 left-0 z-50 bg-white dark:bg-[#0b1120]  transition-colors duration-300">
+    <header className="w-full fixed top-0 left-0 z-50 bg-white dark:bg-[#0b1120] transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-6 py-4 md:py-5 flex items-center justify-between">
 
-        {/* Logo */}
+        {/* LOGO */}
         <div className="flex items-center">
           <Image
             src="/logo.png"
-            alt=" Logo"
+            alt="Logo"
             width={500}
             height={500}
-            className="h-18 md:h-24 w-auto object-contain"
             priority
+            className="h-18 md:h-24 w-auto object-contain"
           />
         </div>
 
-        {/* Desktop Navigation */}
+        {/* DESKTOP NAV */}
         <nav className="hidden md:flex items-center space-x-7">
           {navItems.map((item) => (
             <Link
               key={item.id}
               to={item.id}
-              smooth
-              offset={-80}
-              duration={500}
-              spy
+              smooth={true}
+              offset={-100}
+              duration={600}
+              spy={true}
+              onSetActive={() => setActiveSection(item.id)}
               className={`relative cursor-pointer font-medium text-[16px] transition-colors
                 ${
                   activeSection === item.id
@@ -95,32 +77,32 @@ const Header = () => {
             </Link>
           ))}
 
-          {/* Theme Toggle */}
+          {/* THEME BUTTON (ICON ONLY) */}
           <button
             onClick={toggleTheme}
-            aria-label="Toggle dark mode"
+            aria-label="Toggle theme"
             className="ml-3 text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 transition-colors"
           >
             {theme === "light" ? <FiMoon size={20} /> : <FiSun size={20} />}
           </button>
 
-          {/* WhatsApp */}
+          {/* WHATSAPP */}
           <a
             href="https://wa.me/923209060485"
             target="_blank"
             rel="noopener noreferrer"
-            className="ml-3 text-green-500 hover:text-green-600 transition-colors"
             aria-label="WhatsApp"
+            className="ml-3 text-green-500 hover:text-green-600 transition-colors"
           >
             <SiWhatsapp size={22} />
           </a>
         </nav>
 
-        {/* Mobile Icons */}
+        {/* MOBILE ICONS */}
         <div className="md:hidden flex items-center space-x-3">
           <button
             onClick={toggleTheme}
-            aria-label="Toggle dark mode"
+            aria-label="Toggle theme"
             className="text-gray-700 dark:text-gray-200 hover:text-green-600 transition-colors"
           >
             {theme === "light" ? <FiMoon size={20} /> : <FiSun size={20} />}
@@ -130,36 +112,38 @@ const Header = () => {
             href="https://wa.me/923209060485"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-green-500 hover:text-green-600 transition-colors"
             aria-label="WhatsApp"
+            className="text-green-500 hover:text-green-600 transition-colors"
           >
             <SiWhatsapp size={22} />
           </a>
 
-          <button aria-label="Toggle menu" onClick={toggleMenu}>
+          <button onClick={toggleMenu} aria-label="Toggle menu">
             {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden bg-white dark:bg-[#0b1120] border-t border-gray-200 dark:border-gray-700 px-6 py-5 overflow-hidden transition-colors duration-300"
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-white dark:bg-[#0b1120] border-t border-gray-200 dark:border-gray-700 px-6 py-5 overflow-hidden transition-colors"
           >
             <nav className="flex flex-col space-y-6">
               {navItems.map((item) => (
                 <Link
                   key={item.id}
                   to={item.id}
-                  smooth
-                  offset={-80}
-                  duration={500}
-                  spy
+                  smooth={true}
+                  offset={-100}
+                  duration={600}
+                  spy={true}
+                  onSetActive={() => setActiveSection(item.id)}
                   onClick={closeMenu}
                   className={`font-medium text-[18px] transition-colors
                     ${
@@ -176,7 +160,7 @@ const Header = () => {
                 href="https://wa.me/923209060485"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-green-400 hover:text-green-500 transition-colors mt-4 flex items-center space-x-2"
+                className="flex items-center space-x-2 text-green-400 hover:text-green-500 transition-colors mt-4"
               >
                 <SiWhatsapp size={22} />
                 <span className="text-[16px] font-medium">
