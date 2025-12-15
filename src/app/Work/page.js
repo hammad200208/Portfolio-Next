@@ -72,7 +72,7 @@ const Work = () => {
   return (
     <motion.section
       id="work"
-      className="py-20 px-6 bg-white text-gray-900"
+      className="py-20 px-6 bg-gray-50 dark:bg-[#0b1120] text-gray-900 dark:text-gray-200 transition-colors duration-300"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
@@ -81,7 +81,7 @@ const Work = () => {
       <div className="max-w-6xl mx-auto text-center">
         {/* Heading */}
         <motion.h2
-          className="text-3xl font-semibold text-blue-600 mb-12"
+          className="text-3xl font-semibold text-blue-600 dark:text-green-400 mb-12"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -95,10 +95,10 @@ const Work = () => {
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
-              className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col"
+              className="bg-white dark:bg-gray-900 shadow-md dark:shadow-black/20 rounded-xl overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 + idx * 0.2 }}
+              transition={{ duration: 0.6, delay: 0.2 + idx * 0.1 }}
               viewport={{ once: true }}
             >
               {/* Image with hover zoom */}
@@ -108,16 +108,16 @@ const Work = () => {
                   alt={project.title}
                   width={500}
                   height={300}
-                  className="w-full h-full object-cotain transform group-hover:scale-105 transition duration-500"
+                  className="w-full h-full object-contain transform group-hover:scale-105 transition duration-500"
                 />
               </div>
 
               {/* Content */}
               <div className="p-5 text-left flex flex-col flex-grow">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">
+                <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 mb-4 text-sm line-clamp-3 min-h-[60px]">
+                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm line-clamp-3 min-h-[60px]">
                   {project.description}
                 </p>
 
@@ -126,7 +126,7 @@ const Work = () => {
                   {project.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="px-2 py-1 text-xs bg-blue-100 text-blue-600 rounded-full"
+                      className="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full"
                     >
                       {tag}
                     </span>
@@ -139,9 +139,9 @@ const Work = () => {
                     href={project.code}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition"
+                    className="px-4 py-2 bg-blue-600 dark:bg-green-500 text-white rounded-lg text-sm hover:bg-blue-700 dark:hover:bg-green-600 transition"
                   >
-                    View 
+                    View
                   </a>
                 </div>
               </div>

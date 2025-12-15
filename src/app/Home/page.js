@@ -14,10 +14,10 @@ const Home = () => {
   return (
     <motion.section
       id="home"
-      className="min-h-screen flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-20 bg-white text-black transition-colors duration-300"
+      className="min-h-screen flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-40 bg-white dark:bg-[#0b1120] text-black dark:text-gray-200 transition-colors duration-300"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.2 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
       viewport={{ once: true, amount: 0.3 }}
     >
       {/* Left Side */}
@@ -28,55 +28,59 @@ const Home = () => {
         transition={{ duration: 0.8, delay: 0.3 }}
         viewport={{ once: true }}
       >
-        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-gray-900">
+        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight text-gray-900 dark:text-gray-100">
           Hi,<br />
-          I&apos;m <span className="text-blue-600">Hammad</span><br />
-          Mern Stack Developer.
+          I&apos;m{" "}
+          <span className="text-blue-600 dark:text-green-400">
+            Hammad
+          </span>
+          <br />
+          MERN Stack Developer.
         </h1>
 
         <motion.a
           href="#contact"
-          className="inline-block bg-blue-600 text-white px-6 py-2 rounded shadow hover:bg-blue-700 transition-colors duration-300"
+          className="inline-block bg-blue-600 dark:bg-green-500 text-white px-7 py-3 rounded-lg shadow-md hover:bg-blue-700 dark:hover:bg-green-600 transition-colors duration-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          Contact
+          Contact Me
         </motion.a>
 
         {/* Social Icons */}
         <motion.div
-          className="flex gap-4 mt-4 text-gray-700 text-xl"
+          className="flex gap-5 mt-6 text-xl text-gray-700 dark:text-gray-300"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.6 }}
           viewport={{ once: true }}
         >
-          {/* LinkedIn */}
           <a
             href="https://www.linkedin.com/in/mohammad-hammad-778b03258"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-blue-600"
+            className="hover:text-blue-600 dark:hover:text-green-400 transition-colors"
+            aria-label="LinkedIn"
           >
             <FaLinkedin />
           </a>
 
-          {/* WhatsApp */}
           <a
-            href="https://wa.me/923209060485" // ✅ replace with your real WhatsApp number
+            href="https://wa.me/923209060485"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-green-600"
+            className="hover:text-green-600 transition-colors"
+            aria-label="WhatsApp"
           >
             <FaWhatsapp />
           </a>
 
-          {/* GitHub */}
           <a
             href="https://github.com/hammad200208"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-gray-800"
+            className="hover:text-gray-900 dark:hover:text-white transition-colors"
+            aria-label="GitHub"
           >
             <FaGithub />
           </a>
@@ -85,7 +89,7 @@ const Home = () => {
 
       {/* Right Side */}
       <motion.div
-        className="flex-1 flex justify-center mt-10 md:mt-0"
+        className="flex-1 flex justify-center mt-12 md:mt-0"
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
@@ -106,11 +110,16 @@ const Home = () => {
                   />
                 </mask>
               </defs>
-              <g mask="url(#mask0)">
-                {/* Blue background */}
-                <rect width="100%" height="100%" fill="#2563eb" />
 
-                {/* Profile Image inside blob */}
+              <g mask="url(#mask0)">
+                {/* Blob background */}
+                <rect
+                  width="100%"
+                  height="100%"
+                  className="fill-blue-600 dark:fill-green-500"
+                />
+
+                {/* Profile image */}
                 <image
                   xlinkHref="/bg2.png"
                   x="12%"

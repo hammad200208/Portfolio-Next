@@ -7,7 +7,7 @@ const About = () => {
   return (
     <motion.section
       id="about"
-      className="section px-6 py-20 bg-white text-gray-900 text-center md:text-left max-w-5xl mx-auto"
+      className="section px-6 py-20 bg-white dark:bg-[#0b1120] text-gray-900 dark:text-gray-200 text-center md:text-left max-w-5xl mx-auto transition-colors duration-300"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
@@ -22,14 +22,16 @@ const About = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <Image
-            src="/about1.png"
-            alt="About"
-            width={288}   // md:w-72
-            height={288}
-            className="w-52 md:w-70 rounded-lg shadow-md object-cover"
-            priority
-          />
+          <div className="px-4 rounded-2xl bg-gray-100 dark:bg-white/10 backdrop-blur-md shadow-lg dark:shadow-black/20">
+            <Image
+              src="/about2.png"
+              alt="About"
+              width={288}
+              height={288}
+              className="w-52 md:w-72 rounded-xl object-contain"
+              priority
+            />
+          </div>
         </motion.div>
 
         {/* Text */}
@@ -39,13 +41,15 @@ const About = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl font-semibold text-blue-600 mb-4 text-center md:text-left">
+          <h2 className="text-3xl font-semibold text-blue-600 dark:text-green-400 mb-4 text-center md:text-left">
             About Me
           </h2>
-          <p className="text-gray-700 leading-relaxed mb-6">
+
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
             I&apos;m a passionate MERN Stack developer with experience in building responsive, interactive, and full-stack web applications. Skilled in MongoDB, Express.js, React.js, and Node.js, I focus on writing clean, efficient code and delivering seamless user experiences.
           </p>
-          <p className="text-gray-700 leading-relaxed">
+
+          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
             I love solving problems and bringing ideas to life through code.
             Let&apos;s work together to create something amazing!
           </p>

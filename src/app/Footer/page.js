@@ -6,11 +6,11 @@ import { FaFacebookF, FaLinkedinIn, FaGithub } from "react-icons/fa";
 const Footer = () => {
   return (
     <motion.footer
-      initial={{ opacity: 0, y: 50 }} // hidden and shifted down
-      whileInView={{ opacity: 1, y: 0 }} // animate to visible
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.3 }}
       viewport={{ once: true, amount: 0.5 }}
-      className="bg-blue-950 text-white py-6"
+      className="bg-gray-900 dark:bg-[#0b1120] text-white py-6 transition-colors duration-300"
     >
       <div className="max-w-6xl mx-auto px-4 flex flex-col items-center justify-center space-y-4">
         {/* Social Links */}

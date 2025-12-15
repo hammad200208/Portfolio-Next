@@ -25,11 +25,11 @@ const skills = [
   { name: "Tailwind CSS", level: "80%", width: 80, icon: <SiTailwindcss className="text-cyan-500 text-3xl" /> },
   { name: "JavaScript", level: "85%", width: 85, icon: <FaJs className="text-yellow-500 text-3xl" /> },
   { name: "React.js", level: "80%", width: 80, icon: <SiReact className="text-blue-500 text-3xl" /> },
-  { name: "Next.js", level: "75%", width: 75, icon: <SiNextdotjs className="text-black text-3xl" /> },
+  { name: "Next.js", level: "75%", width: 75, icon: <SiNextdotjs className="text-black dark:text-white text-3xl" /> },
 
   // Backend
   { name: "Node.js", level: "75%", width: 75, icon: <SiNodedotjs className="text-green-600 text-3xl" /> },
-  { name: "Express.js", level: "70%", width: 70, icon: <SiExpress className="text-gray-700 text-3xl" /> },
+  { name: "Express.js", level: "70%", width: 70, icon: <SiExpress className="text-gray-700 dark:text-gray-300 text-3xl" /> },
 
   // Database
   { name: "MongoDB", level: "70%", width: 70, icon: <SiMongodb className="text-green-700 text-3xl" /> },
@@ -43,18 +43,17 @@ const skills = [
     icon: (
       <div className="flex gap-2 text-3xl">
         <SiGit className="text-red-600" />
-        <SiGithub className="text-gray-900" />
+        <SiGithub className="text-gray-900 dark:text-white" />
       </div>
     ),
   },
 ];
 
-
 const Skills = () => {
   return (
     <motion.section
       id="skills"
-      className="py-20 px-6 bg-gray-50"
+      className="py-20 px-6 bg-gray-50 dark:bg-[#0b1120] transition-colors duration-300"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
@@ -62,13 +61,13 @@ const Skills = () => {
     >
       <div className="max-w-6xl mx-auto text-center">
         <motion.h2
-          className="text-3xl font-bold text-blue-600 mb-12"
+          className="text-3xl font-bold text-blue-600 dark:text-green-400 mb-12"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-           Skills
+          Skills
         </motion.h2>
 
         {/* Grid of Circular Skills */}
@@ -76,7 +75,7 @@ const Skills = () => {
           {skills.map((skill, idx) => (
             <motion.div
               key={idx}
-              className="bg-white shadow-lg rounded-xl p-6 flex flex-col items-center gap-4 hover:shadow-blue-400/50 transition"
+              className="bg-white dark:bg-gray-900 shadow-lg dark:shadow-black/20 rounded-xl p-6 flex flex-col items-center gap-4 hover:shadow-blue-400/50 transition"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
@@ -87,13 +86,14 @@ const Skills = () => {
                   value={skill.width}
                   text={skill.level}
                   styles={buildStyles({
-                    pathColor: "#2563eb",
+                    pathColor: "#2563eb", // blue for light
                     textColor: "#1e3a8a",
                     trailColor: "#e5e7eb",
+                    backgroundColor: "#3e98c7",
                   })}
                 />
               </div>
-              <div className="flex items-center gap-2 text-lg font-semibold">
+              <div className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-gray-200">
                 {skill.icon}
                 {skill.name}
               </div>
