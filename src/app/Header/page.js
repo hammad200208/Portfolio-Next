@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-scroll";
 import { FiMenu, FiX, FiSun, FiMoon } from "react-icons/fi";
-import { SiWhatsapp } from "react-icons/si";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -77,7 +76,7 @@ const Header = () => {
             </Link>
           ))}
 
-          {/* THEME BUTTON (ICON ONLY) */}
+          {/* THEME BUTTON */}
           <button
             onClick={toggleTheme}
             aria-label="Toggle theme"
@@ -85,17 +84,6 @@ const Header = () => {
           >
             {theme === "light" ? <FiMoon size={20} /> : <FiSun size={20} />}
           </button>
-
-          {/* WHATSAPP */}
-          <a
-            href="https://wa.me/923209060485"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp"
-            className="ml-3 text-green-500 hover:text-green-600 transition-colors"
-          >
-            <SiWhatsapp size={22} />
-          </a>
         </nav>
 
         {/* MOBILE ICONS */}
@@ -107,16 +95,6 @@ const Header = () => {
           >
             {theme === "light" ? <FiMoon size={20} /> : <FiSun size={20} />}
           </button>
-
-          <a
-            href="https://wa.me/923209060485"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp"
-            className="text-green-500 hover:text-green-600 transition-colors"
-          >
-            <SiWhatsapp size={22} />
-          </a>
 
           <button onClick={toggleMenu} aria-label="Toggle menu">
             {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
@@ -155,18 +133,6 @@ const Header = () => {
                   {item.label}
                 </Link>
               ))}
-
-              <a
-                href="https://wa.me/923209060485"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-2 text-green-400 hover:text-green-500 transition-colors mt-4"
-              >
-                <SiWhatsapp size={22} />
-                <span className="text-[16px] font-medium">
-                  +92 320 9060485
-                </span>
-              </a>
             </nav>
           </motion.div>
         )}

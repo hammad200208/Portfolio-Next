@@ -1,5 +1,6 @@
 "use client";
 
+import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers"; // your theme provider
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
       <body className={`${poppins.variable} antialiased`}>
         <Providers>
           {children}
+          <FloatingWhatsApp />
         </Providers>
       </body>
     </html>
