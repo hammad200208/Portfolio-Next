@@ -28,7 +28,7 @@ const About = () => {
               alt="About"
               width={288}
               height={288}
-              className="w-52 md:w-72 rounded-xl object-contain"
+              className="w-52 md:w-62 rounded-xl object-contain"
               priority
             />
           </div>
