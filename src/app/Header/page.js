@@ -50,7 +50,7 @@ const Header = () => {
             width={500}
             height={500}
             priority
-            className="h-18 md:h-24 w-auto object-contain"
+            className="h-14 md:h-18 w-auto object-contain"
           />
         </div>
 
