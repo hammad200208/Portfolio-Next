@@ -38,14 +38,39 @@ const Home = () => {
           MERN Stack Developer.
         </h1>
 
-        <motion.a
-          href="#contact"
-          className="inline-block bg-blue-600 dark:bg-green-500 text-white px-7 py-3 rounded-lg shadow-md hover:bg-blue-700 dark:hover:bg-green-600 transition-colors duration-300"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Contact Me
-        </motion.a>
+        <motion.div
+  className="flex flex-col sm:flex-row gap-4"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  transition={{ delay: 0.4 }}
+  viewport={{ once: true }}
+>
+  {/* Contact Me */}
+  <motion.a
+    href="#contact"
+    className="inline-block bg-blue-600 dark:bg-green-500 text-white px-8 py-4 rounded-lg shadow-md
+               hover:bg-blue-700 dark:hover:bg-green-600 transition-colors duration-300 text-center"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    Contact Me
+  </motion.a>
+
+  {/* Download Resume */}
+  <motion.a
+    href="/Mohammad-Hammad-Resume.pdf"
+    download
+    className="inline-block px-7 py-3 rounded-lg border-2 border-blue-600 dark:border-green-400
+               text-blue-600 dark:text-green-400 font-medium
+               hover:bg-blue-50 dark:hover:bg-green-900/20
+               transition-colors duration-300 text-center"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    Download Resume
+  </motion.a>
+</motion.div>
+
 
         {/* Social Icons */}
         <motion.div

@@ -22,7 +22,7 @@ const About = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
         >
-          <div className="px-4 rounded-2xl bg-gray-100 dark:bg-white/10 backdrop-blur-md shadow-lg dark:shadow-black/20">
+          <div className="px-4 rounded-2xl bg-blue-600 dark:bg-[#00cc5d] backdrop-blur-md shadow-lg dark:shadow-black/20">
             <Image
               src="/about2.png"
               alt="About"
