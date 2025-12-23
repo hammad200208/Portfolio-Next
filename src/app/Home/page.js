@@ -60,7 +60,7 @@ const Home = () => {
   <motion.a
     href="/Mohammad-Hammad-Resume.pdf"
     download
-    className="inline-block px-7 py-3 rounded-lg border-2 border-blue-600 dark:border-green-400
+    className="inline-block px-7 py-4 rounded-lg border-2 border-blue-600 dark:border-green-400
                text-blue-600 dark:text-green-400 font-medium
                hover:bg-blue-50 dark:hover:bg-green-900/20
                transition-colors duration-300 text-center"
