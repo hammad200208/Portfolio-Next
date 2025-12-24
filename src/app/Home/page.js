@@ -58,7 +58,7 @@ const Home = () => {
 
   {/* Download Resume */}
   <motion.a
-    href="/Mohammad-Hammad-Resume.pdf"
+    href="/CV.pdf"
     download
     className="inline-block px-7 py-4 rounded-lg border-2 border-blue-600 dark:border-green-400
                text-blue-600 dark:text-green-400 font-medium
