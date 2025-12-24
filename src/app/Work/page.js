@@ -13,6 +13,14 @@ const projects = [
     tags: ["React", "Tailwind", "API"],
   },
   {
+    title: "Planto Dashboard",
+    image: "/work4.PNG",
+    description:
+      "Dashboard of planto website where users can accept or reject orders plants online. Built with React and Tailwind CSS.",
+    code: "https://planto-dashboard.vercel.app/",
+    tags: ["React", "Tailwind", "API"],
+  },
+  {
     title: "Resumen Ai",
     image: "/resume.png",
     description:
