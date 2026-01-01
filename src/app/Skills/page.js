@@ -46,7 +46,7 @@ const Skills = () => {
   return (
     <motion.section
       id="skills"
-      className="w-full block py-20 px-6 bg-gray-50 dark:bg-[#0b1120] transition-colors duration-300"
+      className="w-full py-20 px-6 bg-gray-50 dark:bg-[#0b1120] transition-colors duration-300"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7 }}
@@ -63,17 +63,26 @@ const Skills = () => {
           Skills
         </motion.h2>
 
-        {/* ✅ MOBILE-FIRST GRID */}
+        {/* GRID */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
           {skills.map((skill, idx) => (
             <motion.div
               key={idx}
-              className="bg-white dark:bg-gray-900 shadow-lg dark:shadow-black/20 rounded-xl p-6 flex flex-col items-center gap-4"
+              className="
+                bg-white dark:bg-gray-900
+                rounded-xl p-6
+                flex flex-col items-center gap-4
+                shadow-md dark:shadow-black/30
+                hover:shadow-2xl dark:hover:shadow-black/50
+                transition-all duration-300
+              "
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: idx * 0.05 }}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.4, delay: idx * 0.05 }}
               viewport={{ once: true }}
             >
+              {/* CIRCLE */}
               <div className="w-24 h-24">
                 <CircularProgressbar
                   value={skill.width}
@@ -86,6 +95,7 @@ const Skills = () => {
                 />
               </div>
 
+              {/* LABEL */}
               <div className="flex items-center gap-2 text-lg font-semibold text-gray-900 dark:text-gray-200">
                 {skill.icon}
                 {skill.name}

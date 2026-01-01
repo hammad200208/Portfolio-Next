@@ -24,11 +24,11 @@ const About = () => {
         >
           <div className="px-4 rounded-2xl bg-blue-600 dark:bg-[#00cc5d] backdrop-blur-md shadow-lg dark:shadow-black/20">
             <Image
-              src="/about2.png"
+              src="/about.png"
               alt="About"
               width={288}
               height={288}
-              className="w-52 md:w-62 rounded-xl object-contain"
+              className="w-52 md:w-100 rounded-xl object-contain"
               priority
             />
           </div>

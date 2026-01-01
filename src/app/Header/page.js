@@ -39,66 +39,82 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full fixed top-0 left-0 z-50 bg-white dark:bg-[#0b1120] transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-6 py-4 md:py-5 flex items-center justify-between">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-[#0b1120] transition-colors">
+      <div className="max-w-7xl mx-auto px-6 py-4 md:py-5">
 
-        {/* LOGO */}
-        <div className="flex items-center">
+        {/* DESKTOP */}
+        <div className="hidden md:flex items-center justify-between">
+
+          {/* LOGO (LEFT) */}
           <Image
-            src="/logo1.png"
+            src="/Made with insMind-Hammad2.png"
             alt="Logo"
-            width={500}
-            height={500}
+            width={400}
+            height={400}
             priority
-            className="h-14 md:h-18 w-auto object-contain"
+            className="h-18 w-auto  object-contain"
           />
+
+          {/* NAV + THEME (RIGHT) */}
+          <div className="flex items-center space-x-8">
+
+            {/* NAV LINKS */}
+            <nav className="flex items-center space-x-7">
+              {navItems.map((item) => (
+                <Link
+                  key={item.id}
+                  to={item.id}
+                  smooth={true}
+                  offset={-100}
+                  duration={600}
+                  spy={true}
+                  onSetActive={() => setActiveSection(item.id)}
+                  className={`relative cursor-pointer font-medium text-[16px] transition-colors
+                    ${
+                      activeSection === item.id
+                        ? "text-green-600 dark:text-green-400 font-semibold after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:bg-green-400"
+                        : "text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400"
+                    }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* THEME BUTTON */}
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              className="text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 transition-colors"
+            >
+              {theme === "light" ? <FiMoon size={22} /> : <FiSun size={22} />}
+            </button>
+          </div>
         </div>
 
-        {/* DESKTOP NAV */}
-        <nav className="hidden md:flex items-center space-x-7">
-          {navItems.map((item) => (
-            <Link
-              key={item.id}
-              to={item.id}
-              smooth={true}
-              offset={-100}
-              duration={600}
-              spy={true}
-              onSetActive={() => setActiveSection(item.id)}
-              className={`relative cursor-pointer font-medium text-[16px] transition-colors
-                ${
-                  activeSection === item.id
-                    ? "text-green-600 dark:text-green-400 font-semibold after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:bg-green-400"
-                    : "text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400"
-                }`}
+        {/* MOBILE */}
+        <div className="flex md:hidden items-center justify-between">
+          <Image
+            src="/Made with insMind-Hammad2.png"
+            alt="Logo"
+            width={300}
+            height={300}
+            className="h-12 w-auto object-contain"
+          />
+
+          <div className="flex items-center space-x-3">
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              className="text-gray-700 dark:text-gray-200"
             >
-              {item.label}
-            </Link>
-          ))}
+              {theme === "light" ? <FiMoon size={20} /> : <FiSun size={20} />}
+            </button>
 
-          {/* THEME BUTTON */}
-          <button
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            className="ml-3 text-gray-700 dark:text-gray-200 hover:text-green-600 dark:hover:text-green-400 transition-colors"
-          >
-            {theme === "light" ? <FiMoon size={20} /> : <FiSun size={20} />}
-          </button>
-        </nav>
-
-        {/* MOBILE ICONS */}
-        <div className="md:hidden flex items-center space-x-3">
-          <button
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            className="text-gray-700 dark:text-gray-200 hover:text-green-600 transition-colors"
-          >
-            {theme === "light" ? <FiMoon size={20} /> : <FiSun size={20} />}
-          </button>
-
-          <button onClick={toggleMenu} aria-label="Toggle menu">
-            {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
-          </button>
+            <button onClick={toggleMenu} aria-label="Toggle menu">
+              {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -110,7 +126,7 @@ const Header = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white dark:bg-[#0b1120] border-t border-gray-200 dark:border-gray-700 px-6 py-5 overflow-hidden transition-colors"
+            className="md:hidden bg-white dark:bg-[#0b1120] border-t border-gray-200 dark:border-gray-700 px-6 py-5"
           >
             <nav className="flex flex-col space-y-6">
               {navItems.map((item) => (
@@ -123,7 +139,7 @@ const Header = () => {
                   spy={true}
                   onSetActive={() => setActiveSection(item.id)}
                   onClick={closeMenu}
-                  className={`font-medium text-[18px] transition-colors
+                  className={`font-medium text-[18px]
                     ${
                       activeSection === item.id
                         ? "text-green-400 font-semibold"
