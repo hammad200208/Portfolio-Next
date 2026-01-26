@@ -14,7 +14,7 @@ const projects = [
   },
   {
     title: "Planto Dashboard",
-    image: "/work4.PNG",
+    image: "/work4.png",
     description:
       "Dashboard of planto website where users can accept or reject orders plants online. Built with React and Tailwind CSS.",
     code: "https://planto-dashboard.vercel.app/",
