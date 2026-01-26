@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const projects = [
   {
-    title: "Planto Project",
+    title: "Planto",
     image: "/work1.PNG",
     description:
       "A modern plant shop website where users can order plants online. Built with React and Tailwind CSS.",
