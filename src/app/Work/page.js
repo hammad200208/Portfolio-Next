@@ -98,44 +98,46 @@ const Work = () => {
           My Work
         </motion.h2>
 
-        {/* ✅ MOBILE-FIRST GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* ✅ ALTERNATING LAYOUT */}
+        <div className="space-y-16">
           {projects.map((project, idx) => (
             <motion.div
               key={idx}
-              className="bg-white dark:bg-gray-900 shadow-md dark:shadow-black/20 rounded-xl overflow-hidden flex flex-col"
+              className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-8 items-center`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: idx * 0.05 }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
               viewport={{ once: true }}
             >
               {/* IMAGE */}
-              <div className="w-full h-52 overflow-hidden bg-gray-100 dark:bg-gray-800">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={500}
-                  height={300}
-                  className="w-full h-full object-cover"
-                />
+              <div className="w-full lg:w-1/2">
+                <div className="rounded-lg overflow-hidden shadow-lg dark:shadow-black/40">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={500}
+                    height={350}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
               </div>
 
               {/* CONTENT */}
-              <div className="p-5 text-left flex flex-col flex-grow">
-                <h3 className="text-xl font-semibold mb-2">
+              <div className="w-full lg:w-1/2 text-left">
+                <h3 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
                   {project.title}
                 </h3>
 
-                <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
+                <p className="text-gray-600 dark:text-gray-300 mb-6 text-base leading-relaxed">
                   {project.description}
                 </p>
 
                 {/* TAGS */}
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag, i) => (
                     <span
                       key={i}
-                      className="px-2 py-1 text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full"
+                      className="px-3 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full"
                     >
                       {tag}
                     </span>
@@ -143,16 +145,14 @@ const Work = () => {
                 </div>
 
                 {/* BUTTON */}
-                <div className="mt-auto">
-                  <a
-                    href={project.code}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block px-4 py-2 bg-blue-600 dark:bg-green-500 text-white rounded-lg text-sm hover:bg-blue-700 dark:hover:bg-green-600 transition"
-                  >
-                    View
-                  </a>
-                </div>
+                <a
+                  href={project.code}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-6 py-3 bg-blue-600 dark:bg-green-500 text-white rounded-lg font-medium hover:bg-blue-700 dark:hover:bg-green-600 transition duration-300"
+                >
+                  View Project
+                </a>
               </div>
             </motion.div>
           ))}

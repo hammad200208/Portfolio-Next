@@ -1,6 +1,7 @@
 "use client";
 
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
+import Chatbot from "./components/Chatbot";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers"; // your theme provider
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
         <Providers>
           {children}
           <FloatingWhatsApp />
+          <Chatbot />
         </Providers>
       </body>
     </html>
