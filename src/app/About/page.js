@@ -61,7 +61,7 @@ const About = () => {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             <div className="p-4 rounded-xl bg-gray-100 dark:bg-gray-900 text-center">
               <h3 className="text-xl font-bold text-blue-600 dark:text-green-400">
-                1+
+                2+
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 Years Experience
