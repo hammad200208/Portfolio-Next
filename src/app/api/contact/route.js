@@ -1,77 +1,45 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-export async function POST(req) {
+export async function POST(request) {
   try {
-    const body = await req.json();
+    const { name, email, message } = await request.json();
 
-    const { name, email, message } = body;
-
-    // Validation
     if (!name || !email || !message) {
       return Response.json(
-        {
-          success: false,
-          message: "All fields are required",
-        },
-        {
-          status: 400,
-        }
+        { success: false, error: "Missing required fields" },
+        { status: 400 }
       );
     }
 
-    // Send email
-    await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>",
-      to: "yourgmail@gmail.com",
-      subject: `New Message From ${name}`,
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
+
+    await transporter.sendMail({
+      from: `"${name}" <${process.env.EMAIL_USER}>`,
       replyTo: email,
-
+      to: process.env.EMAIL_TO,
+      subject: `New portfolio message from ${name}`,
+      text: message,
       html: `
-        <div style="font-family: Arial, sans-serif; padding: 20px;">
-          <h2>New Portfolio Message 🚀</h2>
-
-          <p>
-            <strong>Name:</strong> ${name}
-          </p>
-
-          <p>
-            <strong>Email:</strong> ${email}
-          </p>
-
-          <p>
-            <strong>Message:</strong>
-          </p>
-
-          <div
-            style="
-              background:#f4f4f4;
-              padding:15px;
-              border-radius:8px;
-            "
-          >
-            ${message}
-          </div>
-        </div>
+        <h3>New message from your portfolio</h3>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message.replace(/\n/g, "<br/>")}</p>
       `,
     });
 
-    return Response.json({
-      success: true,
-      message: "Email sent successfully",
-    });
+    return Response.json({ success: true });
   } catch (error) {
-    console.log(error);
-
+    console.error("Email send error:", error);
     return Response.json(
-      {
-        success: false,
-        message: "Failed to send email",
-      },
-      {
-        status: 500,
-      }
+      { success: false, error: "Failed to send message" },
+      { status: 500 }
     );
   }
 }
