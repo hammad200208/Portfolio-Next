@@ -51,7 +51,7 @@ export default function Chatbot() {
 
       setMessages((prev) => [
         ...prev,
-        { text: data.reply, sender: "bot" },
+        { text: data.reply, sender: "bot", link: data.link },
       ]);
     } catch (error) {
       setMessages((prev) => [
@@ -94,6 +94,16 @@ export default function Chatbot() {
                 }`}
               >
                 {msg.text}
+                {msg.link && (
+                  <a
+                    href={msg.link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block mt-1 text-blue-600 dark:text-blue-300 underline font-medium"
+                  >
+                    {msg.link.label}
+                  </a>
+                )}
               </div>
             ))}
 
