@@ -5,6 +5,14 @@ import Image from "next/image";
 
 const projects = [
   {
+    title: "Dental Clinic Management System",
+    image: "/dental.png",
+    description:
+      "Developed a full-stack desktop application for dental clinic management using React.js, Electron, and SQLite, enabling fully offline operation with no cloud dependency or recurring costs. Designed a relational database schema connecting patients, visits, and appointments through foreign keys, with a secure IPC bridge handling all communication between the React frontend and Electron backend. Implemented appointment scheduling, automated billing with PDF invoice generation, real-time dashboard analytics, and a full backup/restore system for data portability.",
+    code: "https://www.linkedin.com/posts/mohammad-hammad-778b03258_reactjs-electron-sqlite-activity-7473437323855142913-WI8Y?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAAD-GHIwBo5sS6m9mDPuHqo4eK1DvK8r7ZBA",
+    tags: ["React", "Tailwind", "Electron", "SQLite"],
+  },
+  {
     title: "Planto",
     image: "/work1.PNG",
     description:
